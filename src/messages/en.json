@@ -1,0 +1,353 @@
+{
+  "Header": {
+    "about": "About us",
+    "products": "Cargo Terminal",
+    "routes": "Flight Routes",
+    "cta": "Get started",
+    "cart": "Cart",
+    "langName": "English"
+  },
+  "Home": {
+    "badge": "Specialized Services",
+    "title": "Choose the plan that fits your needs",
+    "cta": "Hire Now",
+    "in_cart": "In cart",
+    "tax_info": "MXN + TAX",
+    "hero": {
+      "title": "Take your company to New Digital Orbits.",
+      "description": "Blast off with our technology solutions, original software, and specialized support, designed to boost your productivity, protect your investment, and conquer every technological challenge successfully."
+    },
+    "about": {
+      "badge": "About us",
+      "text": "Whether you are looking to upgrade your workstation, acquire software licenses, or maintain your systems, at Vanguardia Tecnología we design tailor-made solutions.",
+      "cta": "Read more",
+      "questions": "Have questions?",
+      "call": "Call:"
+    },
+    "services": {
+      "badge": "Services",
+      "title": "Expert technology.",
+      "description": "We help businesses and professionals conquer their goals with reliable technical support, preventive maintenance, and custom development. From system optimization to custom applications, our expert crew delivers real results that drive your mission.",
+      "items": {
+        "0": {
+          "title": "Orbit Support - Remote Assistance",
+          "desc": "We solve technical problems immediately through a secure connection, without travel or unnecessary wait times."
+        },
+        "1": {
+          "title": "Software Module - Installation & Configuration",
+          "desc": "We install and configure specialized software ensuring compatibility, security, and optimal performance on your equipment."
+        },
+        "2": {
+          "title": "Space Shield - Preventive Maintenance & Optimization",
+          "desc": "We keep your systems in perfect condition with cleaning, optimization, and updates that extend their useful life."
+        },
+        "3": {
+          "title": "Stellar Rescue - Data Recovery",
+          "desc": "We recover accidentally deleted files from hard drives, USBs, and SD cards using advanced and secure techniques."
+        },
+        "4": {
+          "title": "Command Center - Management & Support Systems",
+          "desc": "We implement business management systems with unlimited support for total control of your digital operations."
+        },
+        "5": {
+          "title": "Digital Galaxy - Custom Development",
+          "desc": "We create custom plugins, web systems, and mobile applications designed specifically for your business needs."
+        }
+      }
+    },
+    "pricing": {
+      "badge": "Flight Routes",
+      "title": "Choose the plan that fits your needs",
+      "tax": "plus 16% TAX",
+      "cta": "Get Started",
+      "view_all": "View all flight routes",
+      "custom_text": "Looking for a custom option?",
+      "form_cta": "Fill out the form",
+      "quote_cta": "I already have a quote"
+    },
+    "products": {
+      "badge": "Cargo Terminal",
+      "title": "PRODUCTS",
+      "tax": "+ TAX"
+    },
+    "why": {
+      "badge": "Why choose us?",
+      "title": "Premium technological solutions for modern companies and demanding professionals.",
+      "description": "We deliver premium technological solutions adapted to today's dynamic business environment. From strategy to execution, we help modern brands thrive digitally with reliable results backed by proven technical expertise.",
+      "items": {
+        "0": {
+          "title": "High-Performance Technology",
+          "desc": "We work with leading brands and state-of-the-art equipment to guarantee precision."
+        },
+        "1": {
+          "title": "Constant Technical Support",
+          "desc": "We offer unlimited remote assistance, scheduled maintenance, and priority attention."
+        },
+        "2": {
+          "title": "Custom Development",
+          "desc": "We design tailor-made systems, from specialized plugins to complete applications."
+        }
+      }
+    },
+    "features": {
+      "badge": "Features",
+      "title": "Powerful features to grow your business",
+      "items": {
+        "0": "Cutting-edge technology",
+        "1": "Expert technical support",
+        "2": "Specialized preventive maintenance",
+        "3": "Custom developments",
+        "4": "Guaranteed personalized attention",
+        "5": "Comprehensive digital solutions",
+        "6": "Reliable immediate response",
+        "7": "Limitless innovation"
+      }
+    }
+  },
+  "pricing": {
+    "badge": "Rutas de Vuelo",
+    "title": "Elige el plan que se adapte a tus necesidades",
+    "tax": "mas IVA de 16%",
+    "cta": "Contratar",
+    "view_all": "Ver todas las rutas de vuelo",
+    "custom_text": "Buscas una opcion personalizada?",
+    "form_cta": "Llena el formulario",
+    "quote_cta": "Ya tengo una cotizacion"
+  },
+  "products": {
+    "badge": "Terminal de carga",
+    "title": "PRODUCTOS",
+    "tax": "+ IVA"
+  },
+  "why": {
+    "badge": "Por que elegirnos?",
+    "title": "Soluciones tecnologicas premium para empresas modernas y profesionales exigentes.",
+    "description": "Entregamos soluciones tecnologicas premium adaptadas al dinamico entorno empresarial actual. Desde la estrategia hasta la ejecucion, ayudamos a marcas modernas a prosperar digitalmente con resultados confiables y respaldados por experiencia tecnica comprobada.",
+    "items": [
+      {
+        "title": "Tecnologia de alto rendimiento",
+        "desc": "Trabajamos con marcas lideres y equipos de ultima generacion para garantizar precision."
+      },
+      {
+        "title": "Soporte tecnico constante",
+        "desc": "Ofrecemos asistencia remota ilimitada, mantenimientos programados y atencion prioritaria."
+      },
+      {
+        "title": "Desarrollo personalizado",
+        "desc": "Disenamos sistemas a la medida, desde plugins especializados hasta aplicaciones completas."
+      }
+    ]
+  },
+  "features": {
+    "badge": "Caracteristicas",
+    "title": "Caracteristicas poderosas para hacer crecer tu empresa",
+    "items": [
+      "Tecnologia de vanguardia",
+      "Soporte tecnico experto",
+      "Mantenimiento preventivo especializado",
+      "Desarrollos a medida",
+      "Atencion personalizada garantizada",
+      "Soluciones digitales integrales",
+      "Respuesta inmediata confiable",
+      "Innovacion sin limites"
+    ]
+  },
+  "Footer": {
+    "title": {
+      "part1": "Let's",
+      "part2": "work together"
+    },
+    "quickLinks": {
+      "title": "Quick Links",
+      "items": {
+        "home": "Home",
+        "about": "About Us",
+        "products": "Cargo Terminal",
+        "planes": "Flight Routes"
+      }
+    },
+    "contact": {
+      "title": "Contact details",
+      "address": "AVENIDA. CHAPULTEPEC, N480 PISO 9, DEP. 901, COLONIA. ROMA NORTE, ALCALDIA CUAUHTEMOC, C.P. 06700, CDMX.",
+      "phone": "+52 1 55 1559 2811",
+      "email": "info@vanguardiatecnologia.com"
+    },
+    "form": {
+      "name": "Full Name",
+      "phone": "Phone",
+      "email": "Email",
+      "message": "Message",
+      "terms": "I accept the terms and conditions",
+      "submit": "Send message",
+      "loading": "Sending..."
+    },
+    "bottom": {
+      "payments": "Accepted payments:",
+      "rights": "2026 Technological Vanguard. All rights reserved.",
+      "links": {
+        "privacy": "Privacy",
+        "terms": "Terms",
+        "refunds": "Refunds"
+      }
+    }
+  },
+  "About": {
+    "hero": "About us",
+    "maintenance": {
+      "badge": "EQUIPMENT MAINTENANCE",
+      "title": "Safe Orbit Maintenance",
+      "desc1": "Taking off is not enough; staying in orbit is also necessary. That is why we offer preventive and corrective maintenance services that ensure your equipment always functions at 100%. Our work includes cleaning, optimization, and technical adjustments that extend the life of your technology.",
+      "desc2": "With Vanguardia Tecnología, your technological investment remains calibrated like a ship ready to face any mission without setbacks."
+    },
+    "team": {
+      "badge": "About Us",
+      "title": "Vanguardia Tecnología Crew",
+      "desc1": "Whether you are looking to update your workstation, acquire software licenses, or maintain your systems, at Vanguardia Tecnología we design solutions tailored to your needs. We work with precision and commitment, like an interplanetary journey that requires maximum coordination.",
+      "desc2": "With us, your technology will always be ready to take off to the next level.",
+      "desc3": "At Vanguardia Tecnología, we are passionate about technology and believe that every client deserves the same care and attention as a space mission. Our vision is to be your trusted technology partner, boosting your operations with innovative and reliable solutions.",
+      "cta": "See plans"
+    }
+  },
+  "Products": {
+    "hero": {
+      "badge": "Digital Catalog",
+      "title": "Loading Terminal",
+      "searchPlaceholder": "Search equipment..."
+    },
+    "infoBar": {
+      "resultsFor": "Results: \"{query}\"",
+      "allProducts": "All products",
+      "showing": "Showing",
+      "of": "of",
+      "units": "units",
+      "sync": "Sync",
+      "filters": "Filters"
+    },
+    "error": {
+      "title": "Terminal Error",
+      "message": "We couldn't connect to the product server.",
+      "retry": "Retry Connection"
+    },
+    "empty": {
+      "message": "No equipment found under these criteria.",
+      "reset": "Reset Search"
+    }
+  },
+  "Detail": {
+    "back": "Back to products",
+    "technical_specs": "Technical Specs",
+    "in_cart": "In cart",
+    "tax_info": "MXN + TAX",
+    "add_to_cart": "Add to cart",
+    "out_of_stock": "Out of stock",
+    "review_cart": "Review Cart",
+    "related": {
+      "title": "Related Products",
+      "subtitle": "More options in the category",
+      "view_all": "View all"
+    },
+    "benefits": {
+      "shipping": "Secure Shipping",
+      "warranty": "Extended Warranty",
+      "support": "Technical Support"
+    }
+  },
+  "Pricing": {
+    "hero": "Flight Paths",
+    "badge": "Specialized Services",
+    "title": "Choose the plan that fits your needs",
+    "tax_info": "MXN + TAX",
+    "cta": "Hire Now",
+    "in_cart": "In cart",
+    "custom": {
+      "title": "Looking for something specific?",
+      "desc": "We create custom solutions for projects of any scale.",
+      "form": "Fill out the form",
+      "quote": "I have a quote",
+      "discover": "Discover all our products",
+      "view_all": "View catalog"
+    }
+  },
+  "Quote": {
+    "hero": "Quote Payment",
+    "badge": "Express Processing",
+    "title": "Finalize your order",
+    "desc": "If you already have a budget agreed upon by our advisors, enter the details to link it to your account and proceed to secure payment.",
+    "check1": "Immediate invoicing available",
+    "check2": "Bank-grade security encryption",
+    "form": {
+      "title": "Terminal Data",
+      "no": "Quote Number",
+      "email": "Email Address",
+      "total": "Agreed Total (MXN)",
+      "tax_label": "MXN + TAX",
+      "cta": "Add to Terminal"
+    },
+    "related": {
+      "title": "Suggested Protocols",
+      "view_all": "View all plans"
+    }
+  },
+  "CartDrawer": {
+    "title": "Order Terminal",
+    "items_count": "{count, plural, =0 {No items} =1 {1 unit} other {# units}}",
+    "empty": {
+      "title": "Terminal Empty",
+      "desc": "No assets in the current cart. Explore the catalog to add equipment or services.",
+      "cta": "Explore Catalog"
+    },
+    "summary": {
+      "subtotal": "Subtotal",
+      "tax": "TAX (16%)",
+      "total": "Net Total",
+      "currency": "MXN"
+    },
+    "actions": {
+      "checkout": "Complete Order",
+      "clear": "Clear Terminal",
+      "view_full": "View Details"
+    }
+  },
+  "ProductCard": {
+    "out_of_stock": "Sold Out",
+    "in_stock": "In Stock",
+    "no_stock": "No Stock",
+    "added": "Added",
+    "currency": "MXN"
+  },
+  "CartPage": {
+    "title": "Loading Terminal",
+    "checkout_title": "Payment Protocol",
+    "back": "Back to terminal",
+    "continue": "Continue acquiring",
+    "empty": "The terminal registers no assets.",
+    "items_label": "Assets in queue",
+    "summary": {
+      "title": "Load Summary",
+      "subtotal": "Subtotal",
+      "tax": "TAX (16%)",
+      "shipping": "Shipping",
+      "free": "Free",
+      "total": "Net Total",
+      "cta_checkout": "Proceed to Protocol",
+      "cta_pay": "Execute Payment"
+    },
+    "form": {
+      "shipping_title": "Delivery Logistics",
+      "payment_title": "Payment Terminal (Etomin Secure)",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "email": "Link Channel (Email)",
+      "phone": "Phone",
+      "address": "Full Address",
+      "city": "City",
+      "state": "State",
+      "zip": "ZIP Code",
+      "card_name": "Cardholder Name",
+      "card_no": "Card Number",
+      "expiry": "Expiry",
+      "cvv": "CVV"
+    },
+    "security": "Encrypted processing via Etomin Gateway. SSL 256-bit Active."
+  }
+}
