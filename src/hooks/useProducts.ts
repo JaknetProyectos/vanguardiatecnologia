@@ -43,7 +43,8 @@ export function useProducts(options: UseProductsOptions = {}): UseProductsReturn
       // 1. Iniciar query base
       let query = supabase
         .from("vanguardtech_products")
-        .select("*", { count: "exact" });
+        .select("*", { count: "exact" })
+        .neq("brand", "Compucorel");
 
       // 2. Aplicar filtros (Supabase permite encadenar condicionalmente)
       if (search) {

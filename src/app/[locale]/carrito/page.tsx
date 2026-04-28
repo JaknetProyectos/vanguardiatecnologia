@@ -9,6 +9,8 @@ import {
   ShoppingCart, Trash2, Plus, Minus, ArrowLeft, 
   CreditCard, ShieldCheck, Loader2, Package, Activity 
 } from "lucide-react";
+
+// Hooks y Contexto
 import { useCart } from "@/context/CartContext";
 import { useAlert } from "@/context/AlertContext";
 import { useTranslations } from "next-intl";
@@ -21,10 +23,23 @@ export default function Carrito() {
   const [isCheckout, setIsCheckout] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  // Estado del formulario alineado a la interfaz PaymentData
   const [formData, setFormData] = useState({
-    firstName: "", lastName: "", email: "", telefono: "", 
-    direccion: "", city: "", state: "", cp: "",
-    cardNumber: "", cardName: "", month: "", year: "", cvv: ""
+    firstName: "",
+    lastName: "",
+    middleName: "",
+    email: "",
+    telefono: "",
+    direccion: "",
+    city: "",
+    state: "",
+    cp: "",
+    country: "MX",
+    cardNumber: "",
+    cardName: "",
+    month: "",
+    year: "",
+    cvv: ""
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,28 +52,65 @@ export default function Carrito() {
 
     try {
       const orderId = `VT-${Date.now()}`;
+
+      // Construcción del objeto PaymentData exacto
+      const paymentData = {
+        amount: total,
+        orderId: orderId,
+        cardData: {
+          number: formData.cardNumber.replace(/\s/g, ""), // Limpiar espacios
+          name: formData.cardName,
+          month: formData.month,
+          year: formData.year,
+          cvv: formData.cvv
+        },
+        customer: {
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          middleName: formData.middleName,
+          email: formData.email,
+          telefono: formData.telefono,
+          direccion: formData.direccion,
+          city: formData.city,
+          state: formData.state,
+          cp: formData.cp,
+          country: formData.country
+        }
+      };
+
       const response = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          paymentData: { 
-            amount: total, orderId, 
-            cardData: { number: formData.cardNumber, name: formData.cardName, month: formData.month, year: formData.year, cvv: formData.cvv },
-            customer: { ...formData, country: "MX" }
-          },
-          cartItems: items,
+          paymentData,
+          cartItems: items, // Para el cuerpo del correo en el servidor
           totals: { total, subtotal, tax }
         }),
       });
 
       const result = await response.json();
-      if (!response.ok || !result.success) throw new Error(result.message || "Declinado");
 
-      showAlert({ title: "OPERACIÓN EXITOSA", message: `Orden ${orderId} confirmada.`, confirmText: "ENTENDIDO" });
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "La transacción fue declinada por el banco.");
+      }
+
+      // ÉXITO
+      showAlert({ 
+        title: "PAGO PROCESADO", 
+        message: `Orden ${orderId} confirmada con éxito. Revisa tu correo para el ticket.`, 
+        confirmText: "ENTENDIDO" 
+      });
+      
       clearCart();
       setIsCheckout(false);
+
     } catch (error: any) {
-      showAlert({ title: "FALLO DE PROTOCOLO", message: error.message, confirmText: "REINTENTAR" });
+      showAlert({ 
+        title: "FALLO EN LA TRANSACCIÓN", 
+        message: error.message, 
+        confirmText: "REINTENTAR" 
+      });
+      console.error("Error en checkout:", error);
     } finally {
       setIsLoading(false);
     }
@@ -69,11 +121,11 @@ export default function Carrito() {
       <div className="min-h-screen bg-white">
         <Header />
         <section className="py-60 text-center container mx-auto px-6">
-          <div className="h-20 w-20  flex items-center justify-center mx-auto mb-8">
+          <div className="h-20 w-20 flex items-center justify-center mx-auto mb-8">
             <Package className="h-10 w-10 text-slate-200" />
           </div>
           <h2 className="text-4xl font-black uppercase mb-8">{t("empty")}</h2>
-          <Link href="/productos" className="bg-slate-900 text-white px-10 py-4 font-black uppercase text-xs tracking-widest hover:bg-[#d00000] transition-colors">
+          <Link href="/productos" className="bg-slate-900 text-white px-10 py-4 rounded-xl font-black uppercase text-xs tracking-widest hover:bg-[#d00000] transition-colors">
             {t("continue")}
           </Link>
         </section>
@@ -86,7 +138,6 @@ export default function Carrito() {
     <div className="min-h-screen bg-white">
       <Header />
 
-      {/* Hero Section Industrial */}
       <section className="pt-40 pb-12 bg-white">
         <div className="container mx-auto px-6">
           <button 
@@ -106,7 +157,7 @@ export default function Carrito() {
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-12 gap-16">
 
-            {/* COLUMNA IZQUIERDA: LISTA O FORMULARIO */}
+            {/* FORMULARIO O LISTA */}
             <div className="lg:col-span-8 space-y-10">
               {!isCheckout ? (
                 <>
@@ -119,17 +170,17 @@ export default function Carrito() {
                   
                   <div className="space-y-4">
                     {items.map((item) => (
-                      <div key={item.product.id} className="group flex gap-6 p-6 border-2 border-slate-100 hover:border-slate-900 transition-colors relative">
-                        <div className="h-24 w-24 bg-slate-50 flex-shrink-0 relative border border-slate-100">
+                      <div key={item.product.id} className="group flex gap-6 p-6 border-2 border-slate-100 rounded-xl hover:border-slate-900 transition-colors relative">
+                        <div className="h-24 w-24 bg-slate-50 flex-shrink-0 relative border border-slate-100 rounded-lg overflow-hidden">
                           <Image src={item.product.image} alt={item.product.name} fill className="object-contain p-2" />
                         </div>
                         <div className="flex-1 flex flex-col justify-between">
                           <div>
-                            <h3 className="font-black text-slate-900 uppercase text-sm line-clamp-1 group-hover:text-[#d00000] transition-colors">{item.product.name}</h3>
+                            <h3 className="font-black text-slate-900 uppercase text-sm line-clamp-1">{item.product.name}</h3>
                             <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">{item.product.brand}</p>
                           </div>
                           <div className="flex items-center justify-between mt-4">
-                            <div className="flex items-center border-2 border-slate-100 bg-slate-50 overflow-hidden">
+                            <div className="flex items-center border-2 border-slate-100 bg-slate-50 rounded-lg overflow-hidden">
                               <button onClick={() => updateQuantity(item.product.id, item.quantity - 1)} className="p-2 hover:bg-white transition-colors"><Minus className="h-3 w-3" /></button>
                               <span className="text-xs font-black w-8 text-center">{item.quantity}</span>
                               <button onClick={() => updateQuantity(item.product.id, item.quantity + 1)} className="p-2 hover:bg-white transition-colors"><Plus className="h-3 w-3" /></button>
@@ -173,7 +224,7 @@ export default function Carrito() {
                       </h3>
                       <div className="grid gap-4">
                         <InputTerminal name="cardName" placeholder={t("form.card_name")} required onChange={handleInputChange} />
-                        <InputTerminal name="cardNumber" maxLength={16} placeholder={t("form.card_no")} required onChange={handleInputChange} />
+                        <InputTerminal name="cardNumber" maxLength={19} placeholder={t("form.card_no")} required onChange={handleInputChange} />
                         <div className="grid grid-cols-3 gap-4">
                           <InputTerminal name="month" placeholder="MM" maxLength={2} required onChange={handleInputChange} />
                           <InputTerminal name="year" placeholder="AA" maxLength={2} required onChange={handleInputChange} />
@@ -186,28 +237,28 @@ export default function Carrito() {
               )}
             </div>
 
-            {/* COLUMNA DERECHA: RESUMEN (Sticky con Hard Shadow) */}
+            {/* RESUMEN */}
             <div className="lg:col-span-4">
-              <div className="sticky top-32 bg-white border-2 border-slate-900 p-8 shadow-[12px_12px_0px_#f1f5f9]">
+              <div className="sticky top-32 bg-white border-2 border-slate-900 p-8 rounded-xl shadow-[12px_12px_0px_#f1f5f9]">
                 <h3 className="text-2xl font-black uppercase mb-8 border-b-2 border-slate-900 pb-4">{t("summary.title")}</h3>
                 
-                <div className="space-y-4 mb-10">
-                  <div className="flex justify-between text-xs font-bold text-slate-400 uppercase tracking-widest">
+                <div className="space-y-4 mb-10 text-xs font-bold uppercase tracking-widest">
+                  <div className="flex justify-between text-slate-400">
                     <span>{t("summary.subtotal")}</span>
                     <span className="text-slate-900">${subtotal.toLocaleString()}</span>
                   </div>
-                  <div className="flex justify-between text-xs font-bold text-slate-400 uppercase tracking-widest">
+                  <div className="flex justify-between text-slate-400">
                     <span>{t("summary.tax")}</span>
                     <span className="text-slate-900">${tax.toLocaleString()}</span>
                   </div>
-                  <div className="flex justify-between text-xs font-black uppercase tracking-widest text-emerald-600">
+                  <div className="flex justify-between text-emerald-600 font-black">
                     <span>{t("summary.shipping")}</span>
                     <span>{t("summary.free")}</span>
                   </div>
                   <div className="pt-4 mt-4 border-t-2 border-slate-100 flex justify-between items-baseline">
-                    <span className="text-sm font-black uppercase tracking-widest">{t("summary.total")}</span>
+                    <span className="text-sm font-black text-slate-900">{t("summary.total")}</span>
                     <span className="text-4xl font-black text-slate-900 tracking-tighter">
-                      ${total.toLocaleString()} <small className="text-[10px] font-bold">MXN</small>
+                      ${total.toLocaleString()} <small className="text-[10px]">MXN</small>
                     </span>
                   </div>
                 </div>
@@ -215,7 +266,7 @@ export default function Carrito() {
                 {!isCheckout ? (
                   <button 
                     onClick={() => setIsCheckout(true)} 
-                    className="w-full h-20 bg-[#d00000] hover:bg-slate-900 text-white rounded-xl font-black uppercase text-sm tracking-[0.2em] transition-all active:scale-[0.98] shadow-xl shadow-red-900/10"
+                    className="w-full h-20 bg-[#d00000] hover:bg-slate-900 text-white rounded-xl font-black uppercase text-sm tracking-[0.2em] transition-all"
                   >
                     {t("summary.cta_checkout")}
                   </button>
@@ -224,7 +275,7 @@ export default function Carrito() {
                     form="payment-form"
                     type="submit"
                     disabled={isLoading}
-                    className="w-full h-20 bg-slate-900 text-white font-black uppercase rounded-xl text-sm tracking-[0.2em] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-4"
+                    className="w-full h-20 bg-slate-900 text-white font-black uppercase rounded-xl text-sm tracking-[0.2em] flex items-center justify-center gap-4 transition-all disabled:opacity-50"
                   >
                     {isLoading ? <Loader2 className="animate-spin h-5 w-5" /> : <ShieldCheck className="h-5 w-5 text-[#d00000]" />}
                     {isLoading ? "PROCESANDO..." : t("summary.cta_pay")}
@@ -232,12 +283,15 @@ export default function Carrito() {
                 )}
 
                 <div className="mt-8 pt-8 border-t border-slate-100 text-center">
-                  <p className="text-[10px] font-bold text-slate-300 uppercase leading-relaxed tracking-wider">
+                  <p className="text-[10px] font-bold text-slate-300 uppercase tracking-wider mb-6">
                     {t("security")}
                   </p>
-                  <div className="flex gap-4 justify-center mt-6">
-                    <Image src={"/visa-mastercad.jpg"} width={120} height={40} alt=""/>
-                    <Image src={"/etomin.png"} width={120} height={40} alt=""/>
+                  <div className="flex flex-col gap-4 items-center grayscale opacity-60">
+                    <div className="flex gap-4">
+                       <Image src="/visa.png" width={50} height={30} alt="Visa" className="object-contain" />
+                       <Image src="/mastercard.png" width={50} height={30} alt="Mastercard" className="object-contain" />
+                    </div>
+                    <Image src="/etomin.png" width={100} height={30} alt="Etomin" className="object-contain" />
                   </div>
                 </div>
               </div>
@@ -251,12 +305,11 @@ export default function Carrito() {
   );
 }
 
-// Sub-componente para Inputs Estilo Terminal
 function InputTerminal(props: React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <input 
       {...props}
-      className={`w-full h-14 px-5 bg-slate-50 border-2 border-slate-100 rounded-none outline-none focus:bg-white focus:border-slate-900 transition-all font-bold placeholder:text-slate-300 placeholder:uppercase placeholder:text-[10px] placeholder:tracking-widest ${props.className}`}
+      className={`w-full h-14 px-5 bg-slate-50 border-2 border-slate-100 rounded-xl outline-none focus:bg-white focus:border-slate-900 transition-all font-bold placeholder:text-slate-300 placeholder:uppercase placeholder:text-[10px] placeholder:tracking-widest ${props.className}`}
     />
   );
 }

@@ -91,15 +91,6 @@ export default function PagoCotizacion() {
                     <line x1="90" y1="70" x2="150" y2="70" stroke="currentColor" strokeWidth="4" />
                   </svg>
                 </div>
-
-                <div className="space-y-4">
-                  <div className="flex items-center gap-4 text-xs font-black uppercase tracking-widest text-slate-400">
-                    <Check className="text-[#d00000] h-5 w-5" /> {t("check1")}
-                  </div>
-                  <div className="flex items-center gap-4 text-xs font-black uppercase tracking-widest text-slate-400">
-                    <ShieldCheck className="text-[#d00000] h-5 w-5" /> {t("check2")}
-                  </div>
-                </div>
               </div>
 
               {/* FORM CARD */}

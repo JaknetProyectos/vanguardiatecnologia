@@ -35,12 +35,9 @@ export async function processEtominPayment(payment: PaymentData,ip?: string) {
 
         const token = authResponse.data.authToken;
 
-        console.log(process.env.ETOMIN_USER,process.env.ETOMIN_PASSWORD)
-
         if (!token) throw new Error("Error al autenticarse con Etomin");
 
         etomin.auth(token);
-        console.log(token)
 
         // 2. Tokenizar la tarjeta
         const tokenResponse = await etomin.postCardTokenizer({
@@ -51,8 +48,6 @@ export async function processEtominPayment(payment: PaymentData,ip?: string) {
                 expirationMonth: payment.cardData.month
             }
         });
-
-        console.log(tokenResponse)
 
         const cardToken = tokenResponse.data.cardNumberToken;
 
@@ -80,11 +75,6 @@ export async function processEtominPayment(payment: PaymentData,ip?: string) {
             currency: '484',
             reference: payment.orderId
         });
-
-        console.log(saleResponse)
-
-        console.log(saleResponse.data)
-
         // Retornamos la data si el status es aprobado (usualmente 'APPROVED' o '00')
         return saleResponse.data;
 

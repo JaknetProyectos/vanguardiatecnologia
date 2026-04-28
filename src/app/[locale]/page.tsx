@@ -63,11 +63,7 @@ export default function Home() {
               <p className="text-white/90 text-xl mb-12 max-w-xl leading-relaxed">
                 {t("hero.description")}
               </p>
-              <Link href="/planes">
-                <button className="bg-white text-[#d00000] font-black px-10 py-5 rounded-xl hover:bg-gray-100 transition-all shadow-xl text-lg">
-                  EMPEZAR AHORA
-                </button>
-              </Link>
+              
             </div>
             <div className="relative flex justify-center lg:justify-end">
               <Image
@@ -165,7 +161,7 @@ export default function Home() {
                     </h3>
                     <div className="flex items-baseline gap-1">
                       <span className="text-4xl font-black text-[#d00000]">
-                        ${plan.price.toLocaleString("es-MX")}
+                        MXN ${plan.price.toLocaleString("es-MX")}
                       </span>
                       <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
                         {t("tax_info")}
@@ -230,7 +226,7 @@ export default function Home() {
                   </div>
                   <h3 className="font-bold text-sm text-gray-800 mb-4 line-clamp-2 h-10">{p.name}</h3>
                   <div className="flex items-baseline gap-2">
-                    <span className="text-[#d00000] font-black text-xl">${p.price}</span>
+                    <span className="text-[#d00000] font-black text-xl">MXN ${p.price}</span>
                     <span className="text-[10px] text-gray-400 font-bold">{t("products.tax")}</span>
                   </div>
                 </Link>
