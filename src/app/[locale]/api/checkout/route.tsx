@@ -1,14 +1,18 @@
 import { NextResponse } from 'next/server';
 import { processEtominPayment } from '@/lib/payment';
 import { sendOrderConfirmation } from '@/lib/confirmation';
+import { headers } from 'next/headers';
 
 export async function POST(req: Request) {
     try {
+        const headerList = headers();
         const body = await req.json();
         const { paymentData, cartItems, totals } = body;
+        const forwarded = (await headerList).get("x-forwarded-for");
+        const ip = forwarded ? forwarded.split(',')[0] : "127.0.0.1";
 
         // 1. Ejecutar el pago con Etomin
-        const paymentResponse = await processEtominPayment(paymentData);
+        const paymentResponse = await processEtominPayment(paymentData,ip);
 
         // 2. Verificar Status del Pago (Crucial para evitar tickets de pagos declinados)
         if (paymentResponse.status !== 'APPROVED') {

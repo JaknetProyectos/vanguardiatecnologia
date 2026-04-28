@@ -25,7 +25,7 @@ interface PaymentData {
     orderId: string;
 }
 
-export async function processEtominPayment(payment: PaymentData) {
+export async function processEtominPayment(payment: PaymentData,ip?: string) {
     try {
         // 1. Autenticación con Etomin (Credenciales desde .env)
         const authResponse = await etomin.postSignin({
@@ -71,7 +71,7 @@ export async function processEtominPayment(payment: PaymentData) {
                 postalCode: payment.customer.cp,
                 state: payment.customer.state,
                 country: payment.customer.country,
-                ip: '0.0.0.0' // En producción, captura la IP real del cliente
+                ip: ip || '0.0.0.0' // En producción, captura la IP real del cliente
             },
             cardData: {
                 cardNumberToken: cardToken,

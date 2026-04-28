@@ -6,12 +6,13 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import {
-  RefreshCw, AlertCircle, Search, 
+  RefreshCw, AlertCircle, Search,
   ChevronLeft, ChevronRight, X, Filter
 } from "lucide-react";
 import { useProducts } from "@/hooks/useProducts";
 import ProductCard from "@/components/ProductCard";
 import { useTranslations } from "next-intl";
+import LoadingScreen from "@/components/Loading";
 
 export default function Productos() {
   const t = useTranslations("Products");
@@ -35,6 +36,8 @@ export default function Productos() {
   });
 
   const totalPages = Math.ceil(totalCount / pageSize);
+
+  if (isLoading) return <LoadingScreen />
 
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans">
@@ -79,13 +82,13 @@ export default function Productos() {
 
       <section className="py-16">
         <div className="container mx-auto px-6">
-          
+
           {/* Info Bar */}
           <div className="flex flex-col md:flex-row md:items-center justify-between mb-12 py-6 border-b border-slate-100 gap-6">
             <div className="space-y-1">
               <h2 className="text-xl font-bold text-slate-900">
-                {debouncedSearch 
-                  ? t("infoBar.resultsFor", { query: debouncedSearch }) 
+                {debouncedSearch
+                  ? t("infoBar.resultsFor", { query: debouncedSearch })
                   : t("infoBar.allProducts")}
               </h2>
               <p className="text-slate-500 font-medium">
@@ -94,17 +97,7 @@ export default function Productos() {
             </div>
 
             <div className="flex items-center gap-3">
-              <button
-                onClick={refetch}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl border-2 border-slate-200 font-bold text-sm hover:border-slate-900 transition-all bg-white"
-              >
-                <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
-                {t("infoBar.sync")}
-              </button>
-              <button className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 text-white font-bold text-sm hover:bg-[#d00000] transition-all">
-                <Filter className="h-4 w-4" />
-                {t("infoBar.filters")}
-              </button>
+              
             </div>
           </div>
 
@@ -116,8 +109,8 @@ export default function Productos() {
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-2">{t("error.title")}</h3>
               <p className="text-slate-500 mb-8 px-6">{t("error.message")}</p>
-              <button 
-                onClick={refetch} 
+              <button
+                onClick={refetch}
                 className="bg-[#d00000] text-white rounded-xl px-10 py-4 font-bold hover:bg-slate-900 transition-colors"
               >
                 {t("error.retry")}
@@ -173,11 +166,10 @@ export default function Productos() {
                       <button
                         key={num}
                         onClick={() => setCurrentPage(num)}
-                        className={`w-12 h-12 rounded-xl font-bold border-2 transition-all ${
-                          currentPage === num 
-                            ? "bg-slate-900 border-slate-900 text-white" 
+                        className={`w-12 h-12 rounded-xl font-bold border-2 transition-all ${currentPage === num
+                            ? "bg-slate-900 border-slate-900 text-white"
                             : "bg-white border-slate-200 text-slate-600 hover:border-[#d00000]"
-                        }`}
+                          }`}
                       >
                         {num}
                       </button>

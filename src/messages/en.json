@@ -12,7 +12,7 @@
     "title": "Choose the plan that fits your needs",
     "cta": "Hire Now",
     "in_cart": "In cart",
-    "tax_info": "MXN + TAX",
+    "tax_info": "Tax Included",
     "hero": {
       "title": "Take your company to New Digital Orbits.",
       "description": "Blast off with our technology solutions, original software, and specialized support, designed to boost your productivity, protect your investment, and conquer every technological challenge successfully."
@@ -237,7 +237,7 @@
     "back": "Back to products",
     "technical_specs": "Technical Specs",
     "in_cart": "In cart",
-    "tax_info": "MXN + TAX",
+    "tax_info": "Tax Included",
     "add_to_cart": "Add to cart",
     "out_of_stock": "Out of stock",
     "review_cart": "Review Cart",
@@ -256,7 +256,7 @@
     "hero": "Flight Paths",
     "badge": "Specialized Services",
     "title": "Choose the plan that fits your needs",
-    "tax_info": "MXN + TAX",
+    "tax_info": "Tax Included",
     "cta": "Hire Now",
     "in_cart": "In cart",
     "custom": {
@@ -280,7 +280,7 @@
       "no": "Quote Number",
       "email": "Email Address",
       "total": "Agreed Total (MXN)",
-      "tax_label": "MXN + TAX",
+      "tax_label": "Tax Included",
       "cta": "Add to Terminal"
     },
     "related": {

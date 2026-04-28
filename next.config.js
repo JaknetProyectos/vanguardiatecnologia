@@ -35,6 +35,11 @@ const nextConfig = {
         hostname: "ugc.same-assets.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "compucorel.com",
+        pathname: "/**",
+      },
     ],
   },
 };

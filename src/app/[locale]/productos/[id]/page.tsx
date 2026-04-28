@@ -15,6 +15,7 @@ import { useProducts } from "@/hooks/useProducts";
 import { useCart } from "@/context/CartContext";
 import ProductCard from "@/components/ProductCard";
 import { useTranslations } from "next-intl";
+import LoadingScreen from "@/components/Loading";
 
 export default function ProductoDetalle() {
   const t = useTranslations("Detail");
@@ -35,6 +36,8 @@ export default function ProductoDetalle() {
       openCart();
     }
   };
+
+  if (isLoading) return <LoadingScreen/>
 
   const quantity = product ? getItemQuantity(product.id) : 0;
   const inCart = product ? isInCart(product.id) : false;
@@ -86,7 +89,7 @@ export default function ProductoDetalle() {
                 </div>
                 
                 <div className="grid grid-cols-4 gap-4">
-                  {[0, 1, 2, 3].map((i) => (
+                  {[0].map((i) => (
                     <button
                       key={i}
                       onClick={() => setSelectedImage(i)}
@@ -169,14 +172,6 @@ export default function ProductoDetalle() {
                   <div className="text-center space-y-2">
                     <Truck className="h-6 w-6 mx-auto text-[#d00000]" />
                     <p className="text-[10px] font-black uppercase text-slate-500">{t("benefits.shipping")}</p>
-                  </div>
-                  <div className="text-center space-y-2">
-                    <Shield className="h-6 w-6 mx-auto text-[#d00000]" />
-                    <p className="text-[10px] font-black uppercase text-slate-500">{t("benefits.warranty")}</p>
-                  </div>
-                  <div className="text-center space-y-2">
-                    <Headphones className="h-6 w-6 mx-auto text-[#d00000]" />
-                    <p className="text-[10px] font-black uppercase text-slate-500">{t("benefits.support")}</p>
                   </div>
                 </div>
               </div>

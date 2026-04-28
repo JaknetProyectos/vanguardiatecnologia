@@ -15,6 +15,8 @@ import { useProducts } from "@/hooks";
 import { useCart } from "@/context/CartContext";
 import { pricingPlans } from "@/lib/plans";
 import { Product } from "@/lib/data/products";
+import LoadingScreen from "@/components/Loading";
+import { getOptimizedUrl } from "@/lib/utils";
 
 export default function Home() {
   const t = useTranslations("Home");
@@ -44,7 +46,7 @@ export default function Home() {
 
   const { products, isLoading } = useProducts({ pageSize: 12 })
 
-  if (isLoading) return <p>Cargando</p>
+  if (isLoading) return <LoadingScreen/>
 
   return (
     <div className="min-h-screen bg-white">
@@ -69,7 +71,7 @@ export default function Home() {
             </div>
             <div className="relative flex justify-center lg:justify-end">
               <Image
-                src="https://ext.same-assets.com/3412788416/4288269893.svg"
+                src={getOptimizedUrl("https://plus.unsplash.com/premium_photo-1733678582566-339d89b3e029?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")}
                 alt="Rocket"
                 width={450}
                 height={450}
@@ -99,8 +101,8 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
-            <Image src="https://ext.same-assets.com/3412788416/730896011.jpeg" alt="Team" width={800} height={500} className="rounded-xl h-[400px] object-cover border-b-8 border-[#d00000]" />
-            <Image src="https://ext.same-assets.com/3412788416/4013710870.jpeg" alt="Tech" width={800} height={500} className="rounded-xl h-[400px] object-cover border-b-8 border-gray-200" />
+            <Image src={getOptimizedUrl("https://images.unsplash.com/photo-1721332154191-ba5f1534266e?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")} alt="Team" width={800} height={500} className="rounded-xl h-[400px] object-cover border-b-8 border-[#d00000]" />
+            <Image src={getOptimizedUrl("https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")} alt="Tech" width={800} height={500} className="rounded-xl h-[400px] object-cover border-b-8 border-gray-200" />
           </div>
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 mt-20 p-10 bg-gray-50 rounded-xl border border-gray-100">

@@ -206,7 +206,7 @@ export default function Footer() {
             <Link href="/terminos-y-condiciones" className="text-gray-400 hover:text-[#d00000] transition-colors italic">
               {t("bottom.links.terms")}
             </Link>
-            <Link href="/reembolsos" className="text-gray-400 hover:text-[#d00000] transition-colors italic">
+            <Link href="/politica-de-reembolsos-y-devoluciones" className="text-gray-400 hover:text-[#d00000] transition-colors italic">
               {t("bottom.links.refunds")}
             </Link>
           </div>

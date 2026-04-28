@@ -12,7 +12,7 @@
     "title": "Elige el plan que se adapte a tus necesidades",
     "cta": "Contratar",
     "in_cart": "En el carrito",
-    "tax_info": "MXN + TAX",
+    "tax_info": "Tax Included",
     "hero": {
       "title": "Lleva tu empresa a Nuevas Orbitas Digitales.",
       "description": "Despega con nuestras soluciones de tecnologia, software original y soporte especializado, disenadas para impulsar tu productividad, proteger tu inversion y conquistar cada desafio tecnologico con exito."
@@ -189,7 +189,7 @@
     "back": "Volver a productos",
     "technical_specs": "Detalles Técnicos",
     "in_cart": "En carrito",
-    "tax_info": "MXN + IVA",
+    "tax_info": "IVA Incluido",
     "add_to_cart": "Agregar al carrito",
     "out_of_stock": "Agotado temporalmente",
     "review_cart": "Revisar Carrito",
@@ -208,7 +208,7 @@
     "hero": "Rutas de vuelo",
     "badge": "Servicios Especializados",
     "title": "Elige el plan que se adapte a tus necesidades",
-    "tax_info": "MXN + IVA",
+    "tax_info": "IVA Incluido",
     "cta": "Contratar",
     "in_cart": "En el carrito",
     "custom": {
@@ -232,7 +232,7 @@
       "no": "No. de Cotización",
       "email": "Correo Electrónico",
       "total": "Total Acordado (MXN)",
-      "tax_label": "MXN + IVA",
+      "tax_label": "IVA Incluido",
       "cta": "Añadir a la Terminal"
     },
     "related": {

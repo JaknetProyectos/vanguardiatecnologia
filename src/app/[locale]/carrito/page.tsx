@@ -176,7 +176,7 @@ export default function Carrito() {
                         <InputTerminal name="cardNumber" maxLength={16} placeholder={t("form.card_no")} required onChange={handleInputChange} />
                         <div className="grid grid-cols-3 gap-4">
                           <InputTerminal name="month" placeholder="MM" maxLength={2} required onChange={handleInputChange} />
-                          <InputTerminal name="year" placeholder="AAAA" maxLength={4} required onChange={handleInputChange} />
+                          <InputTerminal name="year" placeholder="AA" maxLength={2} required onChange={handleInputChange} />
                           <InputTerminal name="cvv" placeholder="CVV" type="password" maxLength={4} required onChange={handleInputChange} />
                         </div>
                       </div>
