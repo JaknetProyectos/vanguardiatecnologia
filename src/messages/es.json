@@ -137,9 +137,9 @@
       "payments": "Pagos aceptados:",
       "rights": "2026 Vanguardia Tecnológica. Todos los derechos reservados.",
       "links": {
-        "privacy": "Privacidad",
-        "terms": "Términos",
-        "refunds": "Reembolsos"
+        "privacy": "POLÍTICA DE PRIVACIDAD",
+        "terms": "Términos y Condiciones",
+        "refunds": "Política de reembolsos y devoluciones"
       }
     }
   },
@@ -265,7 +265,8 @@
     "in_stock": "En Existencia",
     "no_stock": "Sin Inventario",
     "added": "Agregado",
-    "currency": "MXN"
+    "currency": "MXN",
+    "tax": "+ IVA"
   },
   "CartPage": {
     "title": "Terminal de Carga",

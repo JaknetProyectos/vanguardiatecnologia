@@ -68,7 +68,7 @@
     "products": {
       "badge": "Cargo Terminal",
       "title": "PRODUCTS",
-      "tax": "+ TAX"
+      "tax": "+ VAT"
     },
     "why": {
       "badge": "Why choose us?",
@@ -185,9 +185,9 @@
       "payments": "Accepted payments:",
       "rights": "2026 Technological Vanguard. All rights reserved.",
       "links": {
-        "privacy": "Privacy",
-        "terms": "Terms",
-        "refunds": "Refunds"
+        "privacy": "Privacy Policy",
+        "terms": "Terms and Conditions",
+        "refunds": "REFUND AND RETURNS POLICY"
       }
     }
   },
@@ -313,7 +313,8 @@
     "in_stock": "In Stock",
     "no_stock": "No Stock",
     "added": "Added",
-    "currency": "MXN"
+    "currency": "MXN",
+    "tax":"+ VAT"
   },
   "CartPage": {
     "title": "Loading Terminal",

@@ -66,7 +66,7 @@ export default function Planes() {
                     </h3>
                     <div className="flex items-baseline gap-1">
                       <span className="text-4xl font-black text-[#d00000]">
-                        ${plan.price.toLocaleString("es-MX")}
+                        MXN ${plan.price.toLocaleString("es-MX")}
                       </span>
                       <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
                         {t("tax_info")}

@@ -87,9 +87,10 @@ export default function ProductCard({ product }: ProductCardProps) {
               )}
             </div>
             <span className="text-2xl font-black text-slate-900 tracking-tighter">
-              ${product.price.toLocaleString("es-MX")}
-              <span className="text-[10px] ml-1 text-slate-400 font-bold">{t("currency")}</span>
+              {t("currency")}    ${product.price.toLocaleString("es-MX")}
+              <span className="text-[12px] ml-1 text-slate-400 font-bold">{t("tax")}</span>
             </span>
+            
           </div>
 
           {/* Acción de Carrito */}
