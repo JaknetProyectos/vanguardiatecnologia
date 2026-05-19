@@ -5,15 +5,15 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { 
-  ShoppingCart, Trash2, Plus, Minus, ArrowLeft, 
-  CreditCard, ShieldCheck, Loader2, Package, Activity 
+import {
+  ShoppingCart, Trash2, Plus, Minus, ArrowLeft,
+  CreditCard, ShieldCheck, Loader2, Package, Activity
 } from "lucide-react";
 
 // Hooks y Contexto
 import { useCart } from "@/context/CartContext";
 import { useAlert } from "@/context/AlertContext";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 export default function Carrito() {
   const t = useTranslations("CartPage");
@@ -21,6 +21,7 @@ export default function Carrito() {
   const { showAlert } = useAlert();
 
   const [isCheckout, setIsCheckout] = useState(false);
+  const locale = useLocale()
   const [isLoading, setIsLoading] = useState(false);
 
   // Estado del formulario alineado a la interfaz PaymentData
@@ -78,7 +79,7 @@ export default function Carrito() {
         }
       };
 
-      const response = await fetch('/api/checkout', {
+      const response = await fetch(`/${locale ?? "es"}/api/checkout`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -95,20 +96,20 @@ export default function Carrito() {
       }
 
       // ÉXITO
-      showAlert({ 
-        title: "PAGO PROCESADO", 
-        message: `Orden ${orderId} confirmada con éxito. Revisa tu correo para el ticket.`, 
-        confirmText: "ENTENDIDO" 
+      showAlert({
+        title: "PAGO PROCESADO",
+        message: `Orden ${orderId} confirmada con éxito. Revisa tu correo para el ticket.`,
+        confirmText: "ENTENDIDO"
       });
-      
+
       clearCart();
       setIsCheckout(false);
 
     } catch (error: any) {
-      showAlert({ 
-        title: "FALLO EN LA TRANSACCIÓN", 
-        message: error.message, 
-        confirmText: "REINTENTAR" 
+      showAlert({
+        title: "FALLO EN LA TRANSACCIÓN",
+        message: error.message,
+        confirmText: "REINTENTAR"
       });
       console.error("Error en checkout:", error);
     } finally {
@@ -140,7 +141,7 @@ export default function Carrito() {
 
       <section className="pt-40 pb-12 bg-white">
         <div className="container mx-auto px-6">
-          <button 
+          <button
             onClick={() => setIsCheckout(false)}
             className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-[#d00000] mb-8 transition-colors"
           >
@@ -167,7 +168,7 @@ export default function Carrito() {
                       [ VACIAR TERMINAL ]
                     </button>
                   </div>
-                  
+
                   <div className="space-y-4">
                     {items.map((item) => (
                       <div key={item.product.id} className="group flex gap-6 p-6 border-2 border-slate-100 rounded-xl hover:border-slate-900 transition-colors relative">
@@ -241,7 +242,7 @@ export default function Carrito() {
             <div className="lg:col-span-4">
               <div className="sticky top-32 bg-white border-2 border-slate-900 p-8 rounded-xl shadow-[12px_12px_0px_#f1f5f9]">
                 <h3 className="text-2xl font-black uppercase mb-8 border-b-2 border-slate-900 pb-4">{t("summary.title")}</h3>
-                
+
                 <div className="space-y-4 mb-10 text-xs font-bold uppercase tracking-widest">
                   <div className="flex justify-between text-slate-400">
                     <span>{t("summary.subtotal")}</span>
@@ -264,8 +265,8 @@ export default function Carrito() {
                 </div>
 
                 {!isCheckout ? (
-                  <button 
-                    onClick={() => setIsCheckout(true)} 
+                  <button
+                    onClick={() => setIsCheckout(true)}
                     className="w-full h-20 bg-[#d00000] hover:bg-slate-900 text-white rounded-xl font-black uppercase text-sm tracking-[0.2em] transition-all"
                   >
                     {t("summary.cta_checkout")}
@@ -288,8 +289,8 @@ export default function Carrito() {
                   </p>
                   <div className="flex flex-col gap-4 items-center grayscale opacity-60">
                     <div className="flex gap-4">
-                       <Image src="/visa.png" width={50} height={30} alt="Visa" className="object-contain" />
-                       <Image src="/mastercard.png" width={50} height={30} alt="Mastercard" className="object-contain" />
+                      <Image src="/visa.png" width={50} height={30} alt="Visa" className="object-contain" />
+                      <Image src="/mastercard.png" width={50} height={30} alt="Mastercard" className="object-contain" />
                     </div>
                     <Image src="/etomin.png" width={100} height={30} alt="Etomin" className="object-contain" />
                   </div>
@@ -307,7 +308,7 @@ export default function Carrito() {
 
 function InputTerminal(props: React.InputHTMLAttributes<HTMLInputElement>) {
   return (
-    <input 
+    <input
       {...props}
       className={`w-full h-14 px-5 bg-slate-50 border-2 border-slate-100 rounded-xl outline-none focus:bg-white focus:border-slate-900 transition-all font-bold placeholder:text-slate-300 placeholder:uppercase placeholder:text-[10px] placeholder:tracking-widest ${props.className}`}
     />

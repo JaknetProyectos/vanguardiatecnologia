@@ -8,19 +8,21 @@ import { Menu, ShoppingCart, Rocket, Info, Package, Globe, X } from "lucide-reac
 import { cn } from "@/lib/utils";
 import { useCart } from "@/context/CartContext";
 import { useTranslations, useLocale } from "next-intl";
+import { useLocaleContext } from "@/context/LocaleContext";
 
 export default function Header() {
   const t = useTranslations("Header");
-  const locale = useLocale();
-  const router = useRouter();
+  
+
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { totalItems, openCart } = useCart();
 
+  const {switchLanguage,locale,isPending} = useLocaleContext()
+
   const toggleLanguage = () => {
     const nextLocale = locale === "es" ? "en" : "es";
-    const newPath = pathname.replace(`/${locale}`, `/${nextLocale}`);
-    router.push(newPath);
+    switchLanguage(nextLocale)
   };
 
   const navLinks = [
