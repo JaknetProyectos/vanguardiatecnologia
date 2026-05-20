@@ -14,6 +14,7 @@ import {
 import { useCart } from "@/context/CartContext";
 import { useAlert } from "@/context/AlertContext";
 import { useLocale, useTranslations } from "next-intl";
+import { processEtominPayment } from "@/lib/payment";
 
 export default function Carrito() {
   const t = useTranslations("CartPage");
@@ -79,6 +80,33 @@ export default function Carrito() {
         }
       };
 
+      const paymentResult = await processEtominPayment({
+        amount: paymentData.amount,
+        cardData: paymentData.cardData,
+        customer: paymentData.customer,
+        orderId: orderId
+      })
+
+      /**
+       * {
+          id: '6a0d08c958988864815aa7ca',
+          reference: 'VT-1779239112288',
+          amount: 928,
+          customerEmail: 'mr@gmail.com',
+          cardNumber: '411111 **** 1111',
+          authorizationNumber: '1010',
+          transactionId: '1779239113820',
+          responseCode: '00',
+          responseMessage: 'Cargo Aprobado',
+          status: 'APPROVED',
+          mode: 'SANDBOX',
+          orderId: 2550463
+        }
+       */
+      if (paymentResult.status != "APPROVED") {
+        throw new Error(paymentResult?.responseMessage as string || "La transacción fue declinada por el banco.");
+      }
+
       const response = await fetch(`/${locale ?? "es"}/api/checkout`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -91,8 +119,9 @@ export default function Carrito() {
 
       const result = await response.json();
 
+
       if (!response.ok || !result.success) {
-        throw new Error(result.message || "La transacción fue declinada por el banco.");
+        throw new Error(paymentResult?.responseMessage as string || "La transacción fue declinada por el banco.");
       }
 
       // ÉXITO
