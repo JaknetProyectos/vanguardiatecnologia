@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@api/etomin": "file:.api/apis/etomin",
+    "@next/third-parties": "^16.2.6",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-separator": "^1.1.8",
     "@radix-ui/react-slot": "^1.2.4",

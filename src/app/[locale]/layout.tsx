@@ -8,6 +8,7 @@ import { routing } from '@/i18n/routing';
 import { AlertProvider } from '@/context/AlertContext';
 import CartDrawer from '@/components/CartDrawer';
 import { LocaleProvider } from '@/context/LocaleContext';
+import { GoogleTagManager } from "@next/third-parties/google";
 
 export default async function LocaleLayout({
   children,
@@ -27,6 +28,8 @@ export default async function LocaleLayout({
   // Carga de mensajes
   const messages = await getMessages();
 
+  const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
+
   return (
     <NextIntlClientProvider messages={messages} locale={locale}>
       <ClientBody>
@@ -39,6 +42,7 @@ export default async function LocaleLayout({
           </CartProvider>
         </LocaleProvider>
       </ClientBody>
+      {gtmId && <GoogleTagManager gtmId={gtmId} />}
     </NextIntlClientProvider>
   );
 }
